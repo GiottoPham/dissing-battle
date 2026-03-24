@@ -1,6 +1,10 @@
-# 🔥 Multi Language Dissing Battle
+# 🔥 Showbiz Dissing Battle
 
-A fun and creative insult battle game where you compete against AI in 3 rounds! Choose from 6 languages and see who can come up with the most creative insults.
+**Parody Game về Scandal "Dzách - Z98" Chu Cấp 5 Củ**
+
+Trận chiến giữa **Chiến Thần Antifan** (Player) và **FC Đốm Đốm** (AI) bảo vệ Idol **Dzách - Z98**.
+
+Thể loại: **Open-Hand Card Battler** với cơ chế Kéo Co Dư Luận.
 
 ## 🎮 How to Play
 
