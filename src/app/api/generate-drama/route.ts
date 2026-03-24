@@ -1,8 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { openai } from '@ai-sdk/openai';
+import { createOpenAI } from '@ai-sdk/openai';
 import { generateObject } from 'ai';
 import { z } from 'zod';
 import { DramaContext, Card, CardType } from '@/types/game';
+
+// Configure GLM API
+const GLM_API_KEY = process.env.GLM_API_KEY;
+const GLM_API_BASE_URL = process.env.GLM_API_BASE_URL || 'https://open.bigmodel.cn/api/paas/v4';
+
+// Create GLM client
+const glm = createOpenAI({
+  baseURL: GLM_API_BASE_URL,
+  apiKey: GLM_API_KEY,
+});
 
 // Zod schema for Drama Context
 const dramaContextSchema = z.object({
@@ -31,10 +41,17 @@ const cardsGenerationSchema = z.object({
 });
 
 export async function POST(req: NextRequest) {
+  if (!GLM_API_KEY) {
+    return NextResponse.json(
+      { error: 'GLM_API_KEY is not configured. Please add it to your environment variables.' },
+      { status: 500 }
+    );
+  }
+
   try {
     // Step 1: Generate Drama Context
     const { object: dramaContext } = await generateObject({
-      model: openai('gpt-4o-mini'),
+      model: glm('glm-4-flash'),
       schema: dramaContextSchema,
       prompt: `Sinh ra một bối cảnh DRAMA NGẪU NHIÊN về đời sống, showbiz, hoặc workplace.
 
@@ -61,7 +78,7 @@ Chỉ trả về JSON, không có text thêm.`,
 
     // Step 2: Generate Cards based on Drama Context
     const { object: cards } = await generateObject({
-      model: openai('gpt-4o-mini'),
+      model: glm('glm-4-flash'),
       schema: cardsGenerationSchema,
       prompt: `Sinh ra 10 LÁ BÀI CHIẾN THUẬT cho trận đấu DRAMA với bối cảnh:
 
@@ -145,7 +162,7 @@ Chỉ trả về JSON, không có text thêm.`,
   } catch (error) {
     console.error('Error generating drama:', error);
     return NextResponse.json(
-      { error: 'Failed to generate drama' },
+      { error: 'Failed to generate drama', details: error instanceof Error ? error.message : 'Unknown error' },
       { status: 500 }
     );
   }

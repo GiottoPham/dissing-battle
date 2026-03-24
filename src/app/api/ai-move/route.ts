@@ -1,8 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { openai } from '@ai-sdk/openai';
+import { createOpenAI } from '@ai-sdk/openai';
 import { generateObject } from 'ai';
 import { z } from 'zod';
 import { Card, DramaContext, Player } from '@/types/game';
+
+// Configure GLM API
+const GLM_API_KEY = process.env.GLM_API_KEY;
+const GLM_API_BASE_URL = process.env.GLM_API_BASE_URL || 'https://open.bigmodel.cn/api/paas/v4';
+
+// Create GLM client
+const glm = createOpenAI({
+  baseURL: GLM_API_BASE_URL,
+  apiKey: GLM_API_KEY,
+});
 
 // Zod schema for AI response
 const aiResponseSchema = z.object({
@@ -13,7 +23,7 @@ const aiResponseSchema = z.object({
 
 // Zod schema for Player dialogue generation
 const playerDialogueSchema = z.object({
-  dialogue: z.string().describe('A sharp, dramatic dialogue line for the player'),
+  dialogue: z.string().describe('A sharp, dramatic dialogue line for player'),
 });
 
 interface AIMoveRequest {
@@ -54,7 +64,7 @@ async function handleAIMove(req: NextRequest) {
 
   try {
     const { object } = await generateObject({
-      model: openai('gpt-4o-mini'),
+      model: glm('glm-4-flash'),
       schema: aiResponseSchema,
       prompt: `Bạn là "Kẻ Bênh Vực Mù Quáng" - một fan cứng hoặc người thân đang bênh vực ${dramaContext?.villain || 'kẻ gây drama'} trước ${dramaContext?.dramaType || 'scandal này'}.
 
@@ -128,7 +138,7 @@ async function handleDialogue(req: NextRequest) {
 
   try {
     const { object } = await generateObject({
-      model: openai('gpt-4o-mini'),
+      model: glm('glm-4-flash'),
       schema: playerDialogueSchema,
       prompt: `Bạn là "Người Bóc Phốt" - đang tranh cãi gay gắt với "Kẻ Bênh Vực Mù Quáng" về drama: ${dramaContext?.title || 'Drama nặc danh'}
 

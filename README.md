@@ -28,7 +28,8 @@ Thể loại: **Open-Hand Card Battler** với cơ chế Kéo Co Dư Luận.
 - **Styling:** Tailwind CSS
 - **UI Components:** Shadcn UI
 - **State Management:** Zustand
-- **AI Engine:** Vercel AI SDK (generateObject + zod schema)
+- **AI Engine:** Vercel AI SDK (generateObject + zod schema) + **GLM Coding Plan API**
+- **AI Model:** GLM-4-Flash
 - **Animations:** Framer Motion
 - **Package Manager:** Bun
 - **Deployment:** Vercel
@@ -153,14 +154,16 @@ dissing-battle/
 Create a `.env.local` file in the root directory:
 
 ```bash
-# GLM Coding Plan API Key
+# GLM Coding Plan API Key (REQUIRED)
 GLM_API_KEY=your_glm_api_key_here
 
-# GLM API Base URL (optional)
-GLM_API_BASE_URL=https://open.bigmodel.cn
+# GLM API Base URL (optional, defaults to ZhipuAI)
+GLM_API_BASE_URL=https://open.bigmodel.cn/api/paas/v4
 ```
 
-Get your GLM API key from: https://open.bigmodel.cn/
+**Get your GLM API key from:** https://open.bigmodel.cn/
+
+**Important:** The app uses GLM-4-Flash model from GLM Coding Plan API. Make sure your API key has access to this model.
 
 ## 🔧 Future Improvements
 
