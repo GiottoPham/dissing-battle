@@ -54,26 +54,28 @@ export default function Home() {
       <div className="min-h-screen bg-gradient-to-br from-purple-600 via-pink-600 to-red-600 flex items-center justify-center p-4">
         <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full text-center">
           <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-            🔥 BÃO BÙA KEO 🔥
+            🔥 Show me your dissing 🔥
           </h1>
           <p className="text-gray-600 mb-6 text-lg">
-            Battle of creative insults - AI vs You!
+            Người nào chửi hay nhất thì thắng - Người vs AI!
           </p>
           <div className="bg-gradient-to-r from-purple-100 to-pink-100 rounded-xl p-6 mb-6">
-            <h2 className="text-xl font-semibold mb-3 text-purple-900">How to Play</h2>
+            <h2 className="text-xl font-semibold mb-3 text-purple-900">Cách chơi</h2>
             <ul className="text-left text-gray-700 space-y-2">
-              <li>• 3 rounds - win 2 to be the champion</li>
-              <li>• Submit your creative insult</li>
-              <li>• AI will respond</li>
-              <li>• Score based on creativity (1-100)</li>
-              <li>• Multi-language support!</li>
+              <li>• 3 rounds - Thắng 2 rounds thì win</li>
+              <li>• AI và bạn sẽ vào vai 1 nhân vật bất kì</li>
+              <li>• Bạn có 5 phút để tìm hiểu về thông tin của nhân vật mà AI nhận</li>
+              <li>• Submit câu chửi chí mạng</li>
+              <li>• AI sẽ đáp lại</li>
+              <li>• Đánh giá bằng sự sáng tạo hẹ hẹ hẹ (Thang điểm từ 1-100)</li>
+              <li>• Hỗ trợ đa ngôn ngữ!</li>vai
             </ul>
           </div>
           <button
             onClick={startGame}
             className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold py-4 px-6 rounded-xl hover:from-purple-700 hover:to-pink-700 transition-all transform hover:scale-105 shadow-lg"
           >
-            🚀 START BATTLE
+            🚀 Muốn chửi lắm chứ gì, bắt đầu nào!
           </button>
         </div>
       </div>
@@ -215,8 +217,8 @@ export default function Home() {
                 <div className="text-center">
                   <p className="text-xl font-bold">
                     {currentRoundData.winner === 'player' ? '🎉 You Win This Round!' :
-                     currentRoundData.winner === 'ai' ? '🤖 AI Wins This Round!' :
-                     '🤝 It\'s a Tie!'}
+                      currentRoundData.winner === 'ai' ? '🤖 AI Wins This Round!' :
+                        '🤝 It\'s a Tie!'}
                   </p>
                 </div>
               </div>
