@@ -17,6 +17,7 @@ A fun and creative insult battle game where you compete against AI in 3 rounds! 
 - **Styling:** Tailwind CSS
 - **State Management:** Zustand
 - **AI:** Vercel AI SDK + GLM Coding Plan API
+- **Package Manager:** Bun
 - **Deployment:** Vercel
 
 ## 📦 Installation
@@ -26,11 +27,11 @@ A fun and creative insult battle game where you compete against AI in 3 rounds! 
 git clone https://github.com/GiottoPham/dissing-battle.git
 cd dissing-battle
 
-# Install dependencies
-npm install
+# Install dependencies with bun
+bun install
 
 # Run development server
-npm run dev
+bun run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
