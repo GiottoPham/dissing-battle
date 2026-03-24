@@ -12,10 +12,11 @@ A fun and creative insult battle game where you compete against AI in 3 rounds! 
 
 ## 🚀 Tech Stack
 
-- **Framework:** Next.js 15 (App Router)
+- **Framework:** Next.js 16 (App Router)
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS
 - **State Management:** Zustand
+- **AI:** Vercel AI SDK + GLM Coding Plan API
 - **Deployment:** Vercel
 
 ## 📦 Installation
@@ -49,11 +50,13 @@ That's it! Vercel will automatically build and deploy your app.
 
 - ✅ Multi-language support (6 languages)
 - ✅ 3-round battle system
-- ✅ Creativity scoring (1-100 points)
-- ✅ Real-time AI responses
+- ✅ Creativity scoring (1-100 points) via GLM AI Model
+- ✅ Real-time AI responses using Vercel AI SDK
+- ✅ Vietnamese insults use chợ búa style (mày tao, not cậu tớ)
 - ✅ Beautiful gradient UI
 - ✅ Responsive design
 - ✅ Zustand state management
+- ✅ GLM Coding Plan API integration
 
 ## 📝 Project Structure
 
@@ -82,15 +85,31 @@ dissing-battle/
 - 🇨🇳 中文
 - 🇰🇷 한국어
 
+## 🔧 Environment Variables
+
+Create a `.env.local` file in the root directory:
+
+```bash
+# GLM Coding Plan API Key
+GLM_API_KEY=your_glm_api_key_here
+
+# GLM API Base URL (optional, defaults to standard endpoint)
+GLM_API_BASE_URL=https://api.zhipuai.cn
+```
+
+Get your GLM API key from: https://open.bigmodel.cn/
+
 ## 🔧 Future Improvements
 
-- [ ] Integrate real AI API (OpenAI, Anthropic, etc.) for better insults
+- [x] Integrate Vercel AI SDK for AI responses
+- [x] Add GLM Coding Plan API for advanced insults and scoring
+- [x] Vietnamese chợ búa style (mày tao, not cậu tớ)
 - [ ] Add more languages
 - [ ] Player vs Player mode
 - [ ] Sound effects
 - [ ] Leaderboard
 - [ ] Insult history database
-- [ ] Advanced creativity scoring using ML
+- [ ] Battle replay history
 
 ## 📄 License
 
